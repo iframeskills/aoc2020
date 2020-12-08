@@ -1,0 +1,7 @@
+build/
+node_modules
+src/**/*.js
+src/**/*.map
+coverage
+package-lock.json
+yarn-error.log
