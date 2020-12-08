@@ -23,10 +23,7 @@ const hasTree = (map: string[][], position: Position): boolean => {
   return map[normalisedPosition.y][normalisedPosition.x] === TREE;
 };
 
-export default (input: string) => {
-  const rows: string[] = input.split("\n");
-
-  const map: string[][] = rows.map((row) => row.split(""));
+const getTreeCount = (map: string[][], vector: Position): number => {
   let treeCount: number = 0;
 
   let position: Position = {
@@ -34,21 +31,38 @@ export default (input: string) => {
     y: 0,
   };
 
-  const vector: Position = {
-    x: 3,
-    y: 1,
-  };
-
   do {
     position = travel(position, vector);
     if (hasTree(map, position)) {
       treeCount += 1;
     }
-  } while (position.y < rows.length - 1);
+  } while (position.y < map.length - 1);
 
-  const resultpart1 = treeCount;
+  return treeCount;
+};
 
-  let resultpart2;
+export default (input: string) => {
+  const rows: string[] = input.split("\n");
+
+  const vector: Position = {
+    x: 3,
+    y: 1,
+  };
+  const map: string[][] = rows.map((row) => row.split(""));
+
+  const resultpart1 = getTreeCount(map, vector);
+
+  const vectors: Position[] = [
+    { x: 1, y: 1 },
+    { x: 3, y: 1 },
+    { x: 5, y: 1 },
+    { x: 7, y: 1 },
+    { x: 1, y: 2 },
+  ];
+
+  const resultpart2 = vectors
+    .map((mappedVector) => getTreeCount(map, mappedVector))
+    .reduce((previousValue, currentValue) => previousValue * currentValue);
 
   return { resultpart1, resultpart2 };
 };
