@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const day1_1 = __importDefault(require("./days/day1/day1"));
-const exercise_1 = __importDefault(require("./days/day1/input/exercise"));
-const result = day1_1.default(exercise_1.default);
+const day2_1 = __importDefault(require("./days/day2/day2"));
+const exercise_1 = __importDefault(require("./days/day2/input/exercise"));
+const result = day2_1.default(exercise_1.default);
 // eslint-disable-next-line no-console
 console.log(result);
 //# sourceMappingURL=index.js.map
