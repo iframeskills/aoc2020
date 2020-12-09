@@ -38,7 +38,7 @@ describe("solution", () => {
     expect(day(exerciseinput).resultpart1).toEqual(part1output);
   });
 
-  xit("PART 2 - sample input should match output", () => {
+  it("PART 2 - sample input should match output", () => {
     expect(day(exerciseinput).resultpart2).toEqual(part2output);
   });
 });
