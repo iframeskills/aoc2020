@@ -1,7 +1,7 @@
-import day5 from "./days/day5";
-import input from "./days/day5/input/exercise";
+import day from "./days/day6";
+import input from "./days/day6/input/exercise";
 
-const result = day5(input);
+const result = day(input);
 
 // eslint-disable-next-line no-console
 console.log(result);
