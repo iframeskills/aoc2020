@@ -27,6 +27,33 @@ export const validatePassport = (input: KeyValue): boolean => {
   return isValid;
 };
 
+/*
+export const validatePassportWithRules = (input: KeyValue): boolean => {
+  const requiredFields = [
+    { name: "byr", rule: (value: number) => value >= 1920 && value <= 2002 },
+    { name: "iyr", rule: (value: number) => value >= 2010 && value <= 2020 },
+    { name: "eyr", rule: (value: number) => value >= 2020 && value <= 2030 },
+    // fck this shit :x
+    "hgt",
+    "hcl",
+    "ecl",
+    "pid",
+  ];
+
+  const inputKeys = Object.keys(input);
+
+  let isValid = true;
+  // for each required field
+  requiredFields.forEach((requiredField) => {
+    if (!inputKeys.includes(requiredField)) {
+      // console.log("missing", requiredField);
+      isValid = false;
+    }
+  });
+  return isValid;
+};
+*/
+
 export default (input: string) => {
   const lines: string[] = input.split(/\r?\n/); // newlines
 
