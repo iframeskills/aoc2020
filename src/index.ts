@@ -1,5 +1,5 @@
-import day from "./days/day6";
-import input from "./days/day6/input/exercise";
+import day from "./days/day10";
+import input from "./days/day10/input/sample";
 
 const result = day(input);
 
