@@ -7,6 +7,14 @@ export const countOccurences = (input: number[]): Map<number, number> => {
   return countedMap;
 };
 
+export const countValidApproaches = ({
+  input,
+  index,
+}: {
+  input: number[];
+  index: number;
+}) => 0; // o_o
+
 export default (input: string) => {
   const numbers: number[] = input.split("\n").map((item) => +item);
   const orderedNumbers: number[] = numbers.sort((a, b) => a - b);
@@ -24,6 +32,10 @@ export default (input: string) => {
 
   const resultpart1 = amountOf1Differences * amountOf3Differences;
 
-  const resultpart2 = 0;
+  const resultpart2 = countValidApproaches({
+    input: orderedNumbers,
+    index: 0,
+  });
+
   return { resultpart1, resultpart2 };
 };

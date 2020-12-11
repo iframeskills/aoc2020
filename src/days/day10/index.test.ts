@@ -1,4 +1,4 @@
-import day, { mapDiff, countOccurences } from ".";
+import day, { mapDiff, countOccurences, countValidApproaches } from ".";
 import sampleinput from "./input/sample";
 import sampleoutput from "./output/sample";
 
@@ -14,6 +14,15 @@ describe("solution", () => {
 
     expect(mapDiff([3, 0])).toEqual(3);
     expect(mapDiff([3, 1])).toEqual(2);
+  });
+
+  xit("countValidApproaches", () => {
+    expect(
+      countValidApproaches({
+        input: [1, 4, 5, 6, 7, 10, 11, 12, 15, 16, 19],
+        index: 0,
+      })
+    ).toEqual(8);
   });
 
   it("sample input should match output", () => {
