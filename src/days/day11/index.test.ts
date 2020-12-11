@@ -30,4 +30,15 @@ describe("solution", () => {
 
     expect(countOccupiedAdjacentSeats({ input, position })).toEqual(result);
   });
+  it("countOccupiedAdjacentSeats", () => {
+    const input = [
+      ["L", "L", "L"],
+      ["L", "L", "L"],
+      ["L", "L", "L"],
+    ];
+    const position = { x: 1, y: 1 };
+    const result = 0;
+
+    expect(countOccupiedAdjacentSeats({ input, position })).toEqual(result);
+  });
 });

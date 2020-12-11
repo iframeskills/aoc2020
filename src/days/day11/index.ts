@@ -76,16 +76,18 @@ const drawFrame = (input: string[][]): Frame => {
         // ... and NO occupied seats adjacent to it?
         frame[x][y] = OCCUPIED;
         changed = true;
-        occupied += 1;
       }
       if (
         character === OCCUPIED &&
         countOccupiedAdjacentSeats({ input, position: { x, y } }) >= 4
       ) {
         // ... and four or more occupied seats adjacent to it?
-
         frame[x][y] = EMPTY;
         changed = true;
+      }
+
+      if (frame[x][y] === OCCUPIED) {
+        occupied += 1;
       }
     });
   });
@@ -93,7 +95,7 @@ const drawFrame = (input: string[][]): Frame => {
   return { frame, changed, occupied };
 };
 
-const render = async (input: string[][]): Promise<Frame> =>
+export const render = async (input: string[][]): Promise<Frame> =>
   new Promise((resolve) => {
     const wait = setTimeout(() => {
       clearTimeout(wait);
@@ -103,7 +105,7 @@ const render = async (input: string[][]): Promise<Frame> =>
     }, DRAW_INTERVAL);
   });
 
-const parseInput = (input: string) =>
+export const parseInput = (input: string) =>
   input.split("\n").map((line) => line.split(""));
 
 export default async (input: string) => {
