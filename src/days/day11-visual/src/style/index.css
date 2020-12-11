@@ -16,13 +16,10 @@ body {
     box-sizing: border-box;
 }
 
-#app {
-}
-
 .container {
     display: grid;
-    grid-template-columns: repeat(10, 25px);
-    grid-template-rows: 25px;
+    grid-template-columns: repeat(var(--column-count), var(--cell-size));
+    grid-template-rows: var(--cell-size);
     grid-gap: 10px;
 }
 
@@ -30,7 +27,12 @@ body {
     display: block;
     background-color: lightgray;
     border-radius: 5px;
-    height: 25px;
+    height: var(--cell-size);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    line-height: var(--cell-size);
 }
 
 .red {

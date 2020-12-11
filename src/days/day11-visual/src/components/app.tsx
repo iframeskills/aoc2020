@@ -6,21 +6,17 @@ import {render, parseInput} from "../../../day11/index";
 import input from "../../../day11/input/sample";
 
 
-const map: string[][] = parseInput(input);
+const map: {data:string, amount:number}[][] = parseInput(input);
+
+let root = document.documentElement;
 
 const App: FunctionalComponent = () => {
-
 
     const [frame, setFrame] = useState(map);
     const [changed, setChanged] = useState(false);
     const [occupied, setOccupied] = useState(0);
 
     useEffect(() =>{
-        // Trigger your effect
-
-        //let changed = false;
-        //let occupied = 0;
-        
         do {
             (async function wrapper() {
                 const result = await render(frame);
@@ -30,22 +26,24 @@ const App: FunctionalComponent = () => {
             })();
 
         } while (changed);
-
-
-        return () => {
-          // Optional: Any cleanup code
-        };
     }, [setFrame, setChanged]);
 
+
+    useEffect(() =>{
+        root.style.setProperty('--column-count', `${frame[0].length}`);
+        root.style.setProperty('--cell-size', `${500/frame[0].length}px`)
+
+    }, [setFrame]);
     console.log(frame);
 
     return (<div>
         <div id="app" className="container">
             {frame.map(row=>row.map(column=>{
                 let blocktype = ""
-                if(column === "L"){blocktype= "red"}
-                if(column === "#"){blocktype= "green"}
-                return <div className={`box ${blocktype}`}></div>
+                if(column.data === "L"){blocktype= "red"}
+                if(column.data === "#"){blocktype= "green"}
+            return <div className={`box ${blocktype}`}>{column.data}
+            {column.amount >= 0 ? <small>({column.amount})</small>: ""}</div>
             }))}
         </div>
         <br />
